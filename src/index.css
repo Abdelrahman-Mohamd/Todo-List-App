@@ -1,0 +1,14 @@
+/* import fonts from google fonts */
+/* navbar, main headings =>  font-family: "Plus Jakarta Sans", sans-serif; */
+/* paragraphs, subheadings =>  font-family: "Rubik", sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+/* remove any default css styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Raleway", sans-serif;
+}
