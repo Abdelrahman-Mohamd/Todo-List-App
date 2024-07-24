@@ -2,7 +2,10 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
   width: 40%;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -49,4 +52,34 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.card-intro-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.starting-button {
+  border-radius: 50%;
+  font-size: 4rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #41278759;
+  transition: color 0.5s ease-in-out;
+}
+.starting-button:hover {
+  color: #4127879c;
+}
+.starting-button:hover + .starting-heading {
+  font-weight: 400;
+}
+
+.starting-heading {
+  font-size: 1rem;
+  font-family: "Rubik", sans-serif;
+  font-weight: 100;
+  color: #4127879c;
+  transition: font-weight 0.5s ease-in-out;
 }

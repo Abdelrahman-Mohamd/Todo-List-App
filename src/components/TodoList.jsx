@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import "../styles/TodoList.css";
+import { MdPlaylistAddCircle } from "react-icons/md";
 
 function TodoList() {
   const [foundTasks, setFoundTasks] = useState(false);
@@ -41,13 +42,13 @@ function TodoList() {
           </div>
         ) : (
           <div className="card-intro-section">
-            <button
+            <MdPlaylistAddCircle
               className="starting-button"
               onClick={() => setFoundTasks(true)}
-            >
-              +
-            </button>
-            <h4>Click Here To Add Your First Task</h4>
+            />
+            <h4 className="starting-heading">
+              Click Here To Add Your First Task
+            </h4>
           </div>
         )}
       </div>
