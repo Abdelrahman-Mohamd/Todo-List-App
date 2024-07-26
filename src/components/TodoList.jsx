@@ -25,6 +25,14 @@ function TodoList() {
     );
   };
 
+  const handleTaskUpdate = (id, updatedTask) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, task: updatedTask } : task
+      )
+    );
+  };
+
   return (
     <>
       <div className="todo-card">
@@ -37,6 +45,7 @@ function TodoList() {
                 id={task.id}
                 completed={task.completed}
                 onToggle={() => toggleTaskCompletion(task.id)}
+                onTaskUpdate={handleTaskUpdate}
               />
             ))}
           </div>

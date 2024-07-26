@@ -1,6 +1,20 @@
 .item-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.task-name {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
 }

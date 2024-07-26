@@ -1,0 +1,26 @@
+.delete-btn {
+  background-color: rgba(102, 1, 1, 0.479);
+  color: white;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid rgba(0, 128, 0, 0.479);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-out;
+  font-family: "Rubik", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.delete-btn:hover {
+  background-color: rgb(102, 1, 1);
+}
+.delete-btn-icon {
+  font-weight: 700;
+  font-size: 1rem;
+}

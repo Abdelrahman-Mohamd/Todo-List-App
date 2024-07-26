@@ -1,18 +1,31 @@
 import "../styles/TodoItem.css";
+import EditTask from "./EditTask";
+import DeleteTask from "./DeleteTask";
 
-function TodoItem(props) {
+function TodoItem({ task, id, completed, onToggle, onTaskUpdate }) {
   return (
     <div className="item-container">
-      <input
-        type="checkbox"
-        id={`task-${props.id}`}
-        checked={props.completed}
-        onChange={props.onToggle}
-        className="todo-item-checkbox"
-      />
-      <label className="todo-item-label" htmlFor={`task-${props.id}`}>
-        {props.task}
-      </label>
+      <div className="task-name">
+        <input
+          type="checkbox"
+          id={`task-${id}`}
+          checked={completed}
+          onChange={onToggle}
+          className="todo-item-checkbox"
+        />
+        <label className="todo-item-label" htmlFor={`task-${id}`}>
+          {task}
+        </label>
+      </div>
+      <div className="task-options">
+        <EditTask
+          task={task}
+          id={id}
+          completed={completed}
+          onTaskUpdate={onTaskUpdate}
+        />
+        <DeleteTask task={task} id={id} completed={completed} />
+      </div>
     </div>
   );
 }
