@@ -1,12 +1,11 @@
 import { MdDelete } from "react-icons/md";
 import "../styles/DeleteTask.css";
-function DeleteTask() {
+
+function DeleteTask({ onDelete }) {
   return (
-    <>
-      <button className="delete-btn">
-        Delete <MdDelete className="delete-btn-icon" />
-      </button>
-    </>
+    <button className="delete-btn" onClick={onDelete}>
+      Delete <MdDelete className="delete-btn-icon" />
+    </button>
   );
 }
 

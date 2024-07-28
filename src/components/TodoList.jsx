@@ -33,6 +33,20 @@ function TodoList() {
     );
   };
 
+  const handleTaskDelete = (id) => {
+    fetch(`/api/task/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok) {
+          setTasks(tasks.filter((task) => task.id !== id));
+        } else {
+          console.error("Error deleting task:", response.statusText);
+        }
+      })
+      .catch((error) => console.error("Error deleting task:", error));
+  };
+
   return (
     <>
       <div className="todo-card">
@@ -46,6 +60,7 @@ function TodoList() {
                 completed={task.completed}
                 onToggle={() => toggleTaskCompletion(task.id)}
                 onTaskUpdate={handleTaskUpdate}
+                onTaskDelete={handleTaskDelete}
               />
             ))}
           </div>

@@ -2,7 +2,14 @@ import "../styles/TodoItem.css";
 import EditTask from "./EditTask";
 import DeleteTask from "./DeleteTask";
 
-function TodoItem({ task, id, completed, onToggle, onTaskUpdate }) {
+function TodoItem({
+  task,
+  id,
+  completed,
+  onToggle,
+  onTaskUpdate,
+  onTaskDelete,
+}) {
   return (
     <div className="item-container">
       <div className="task-name">
@@ -24,7 +31,7 @@ function TodoItem({ task, id, completed, onToggle, onTaskUpdate }) {
           completed={completed}
           onTaskUpdate={onTaskUpdate}
         />
-        <DeleteTask task={task} id={id} completed={completed} />
+        <DeleteTask onDelete={() => onTaskDelete(id)} />
       </div>
     </div>
   );
