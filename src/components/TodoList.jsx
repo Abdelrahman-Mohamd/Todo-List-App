@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
+import AddTask from "./AddTask";
+import AddTaskPopupWindow from "./AddTaskPopupWindow";
 import "../styles/TodoList.css";
 import { MdPlaylistAddCircle } from "react-icons/md";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -8,6 +10,7 @@ function TodoList() {
   const [foundTasks, setFoundTasks] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     fetch("/api/getAllTasks")
@@ -53,39 +56,66 @@ function TodoList() {
       .catch((error) => console.error("Error deleting task:", error));
   };
 
+  const handleAddTask = (newTask) => {
+    fetch("/api/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ task: newTask }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setTasks([...tasks, data]);
+        setIsPopupOpen(false);
+      })
+      .catch((error) => console.error("Error adding task:", error));
+  };
+
   return (
     <>
-      <div className="todo-card">
-        {isLoading ? (
-          <div className="loading-section">
-            <AiOutlineLoading3Quarters className="loading-icon" />
-          </div>
-        ) : foundTasks ? (
-          <div className="card-main-section">
-            {tasks.map((task) => (
-              <TodoItem
-                key={task.id}
-                task={task.task}
-                id={task.id}
-                completed={task.completed}
-                onToggle={() => toggleTaskCompletion(task.id)}
-                onTaskUpdate={handleTaskUpdate}
-                onTaskDelete={handleTaskDelete}
+      <div className="todo-list-container">
+        <div className="todo-card">
+          {isLoading ? (
+            <div className="loading-section">
+              <AiOutlineLoading3Quarters className="loading-icon" />
+            </div>
+          ) : foundTasks ? (
+            <div className="card-main-section">
+              {tasks.map((task) => (
+                <TodoItem
+                  key={task.id}
+                  task={task.task}
+                  id={task.id}
+                  completed={task.completed}
+                  onToggle={() => toggleTaskCompletion(task.id)}
+                  onTaskUpdate={handleTaskUpdate}
+                  onTaskDelete={handleTaskDelete}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="card-intro-section">
+              <MdPlaylistAddCircle
+                className="starting-button"
+                onClick={() => setFoundTasks(true)}
               />
-            ))}
-          </div>
-        ) : (
-          <div className="card-intro-section">
-            <MdPlaylistAddCircle
-              className="starting-button"
-              onClick={() => setFoundTasks(true)}
-            />
-            <h4 className="starting-heading">
-              Click Here To Add Your First Task
-            </h4>
-          </div>
-        )}
+              <h4 className="starting-heading">
+                Click Here To Add Your First Task
+              </h4>
+            </div>
+          )}
+        </div>
+        <div className="add-task-component-container">
+          <AddTask onClick={() => setIsPopupOpen(true)} />
+        </div>
       </div>
+      {isPopupOpen && (
+        <AddTaskPopupWindow
+          onAddTask={handleAddTask}
+          onClose={() => setIsPopupOpen(false)}
+        />
+      )}
     </>
   );
 }

@@ -1,16 +1,24 @@
+.todo-list-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* gap: 10px; */
+  margin-top: 10%;
+}
+
 .todo-card {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-  width: 40%;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 50px 20px;
+  margin-left: 25%;
+  flex: 1;
 }
+
+.add-task-component-container {
+  flex: 1;
+}
+
 .todo-item-label {
   color: black;
   font-size: 1.2rem;
@@ -18,17 +26,19 @@
   font-weight: 100;
   cursor: pointer;
 }
+
 .todo-item-checkbox {
-  appearance: none; /* Remove default checkbox style */
+  appearance: none;
   width: 20px;
   height: 20px;
   border: 2px solid #ccc;
-  border-radius: 50%; /* Make it rounded */
+  border-radius: 50%;
   position: relative;
   cursor: pointer;
 }
+
 .todo-item-checkbox:checked {
-  background-color: #4127879c; /* Change color when checked */
+  background-color: #4127879c;
   border: none;
 }
 
@@ -46,8 +56,9 @@
 
 .todo-item-checkbox:checked + .todo-item-label {
   text-decoration: line-through;
-  color: #888; /* Optional: change the text color */
+  color: #888;
 }
+
 .card-main-section {
   display: flex;
   flex-direction: column;
@@ -60,6 +71,7 @@
   align-items: center;
   gap: 15px;
 }
+
 .starting-button {
   border-radius: 50%;
   font-size: 4rem;
@@ -69,9 +81,11 @@
   color: #41278759;
   transition: color 0.5s ease-in-out;
 }
+
 .starting-button:hover {
   color: #4127879c;
 }
+
 .starting-button:hover + .starting-heading {
   font-weight: 400;
 }
@@ -83,11 +97,13 @@
   color: #4127879c;
   transition: font-weight 0.5s ease-in-out;
 }
+
 .loading-section {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .loading-icon {
   font-size: 4rem;
   color: #4127879c;
