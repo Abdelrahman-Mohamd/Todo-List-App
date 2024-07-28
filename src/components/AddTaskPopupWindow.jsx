@@ -15,7 +15,7 @@ function AddTaskPopupWindow({ onAddTask, onClose }) {
 
   return (
     <div className="popup-overlay">
-      <div className="popup-window">
+      <div className="popup-window" data-aos="fade-up">
         {loading ? (
           <AiOutlineLoading3Quarters className="loading-icon" />
         ) : (
