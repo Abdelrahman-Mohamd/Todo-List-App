@@ -121,7 +121,10 @@ function TodoList() {
             <div className="card-intro-section">
               <MdPlaylistAddCircle
                 className="starting-button"
-                onClick={() => setFoundTasks(true)}
+                onClick={() => {
+                  setFoundTasks(true);
+                  setIsPopupOpen(true);
+                }}
               />
               <h4 className="starting-heading">
                 Click Here To Add Your First Task
