@@ -11,6 +11,7 @@ function TodoList() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isAddingTask, setIsAddingTask] = useState(false);
 
   useEffect(() => {
     fetch("/api/getAllTasks")
@@ -56,20 +57,24 @@ function TodoList() {
       .catch((error) => console.error("Error deleting task:", error));
   };
 
-  const handleAddTask = (newTask) => {
-    fetch("/api/tasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ task: newTask }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setTasks([...tasks, data]);
-        setIsPopupOpen(false);
-      })
-      .catch((error) => console.error("Error adding task:", error));
+  const handleAddTask = async (newTask) => {
+    setIsAddingTask(true);
+    try {
+      const response = await fetch("/api/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ task: newTask }),
+      });
+      const data = await response.json();
+      setTasks([...tasks, data]);
+      setIsPopupOpen(false);
+    } catch (error) {
+      console.error("Error adding task:", error);
+    } finally {
+      setIsAddingTask(false);
+    }
   };
 
   return (
@@ -113,7 +118,10 @@ function TodoList() {
               : "add-task-component-container"
           }
         >
-          <AddTask onClick={() => setIsPopupOpen(true)} />
+          <AddTask
+            onClick={() => setIsPopupOpen(true)}
+            loading={isAddingTask}
+          />
         </div>
       </div>
       {isPopupOpen && (

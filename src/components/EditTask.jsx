@@ -5,6 +5,7 @@ import PopUpWindow from "./PopUpWindow";
 
 function EditTask({ task, id, completed, onTaskUpdate }) {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleEditButton() {
     setIsPopupVisible(true);
@@ -14,8 +15,9 @@ function EditTask({ task, id, completed, onTaskUpdate }) {
     setIsPopupVisible(false);
   }
 
-  function onSave(updatedTask) {
-    fetch(`/api/task/${id}`, {
+  async function onSave(updatedTask) {
+    setLoading(true);
+    await fetch(`/api/task/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -29,6 +31,7 @@ function EditTask({ task, id, completed, onTaskUpdate }) {
         setIsPopupVisible(false);
       })
       .catch((error) => console.error("Error updating task:", error));
+    setLoading(false);
   }
 
   return (
@@ -37,13 +40,7 @@ function EditTask({ task, id, completed, onTaskUpdate }) {
         Edit <FaEdit className="edit-btn-icon" />
       </button>
       {isPopupVisible && (
-        <PopUpWindow
-          task={task}
-          id={id}
-          completed={completed}
-          onClose={closePopup}
-          onSave={onSave}
-        />
+        <PopUpWindow task={task} onClose={closePopup} onSave={onSave} />
       )}
     </>
   );
