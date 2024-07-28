@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import "../styles/TodoList.css";
 import { MdPlaylistAddCircle } from "react-icons/md";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function TodoList() {
   const [foundTasks, setFoundTasks] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/getAllTasks")
@@ -13,8 +15,12 @@ function TodoList() {
       .then((data) => {
         setTasks(data);
         setFoundTasks(data.length > 0);
+        setIsLoading(false);
       })
-      .catch((error) => console.error("Error fetching tasks:", error));
+      .catch((error) => {
+        console.error("Error fetching tasks:", error);
+        setIsLoading(false);
+      });
   }, []);
 
   const toggleTaskCompletion = (taskId) => {
@@ -50,7 +56,11 @@ function TodoList() {
   return (
     <>
       <div className="todo-card">
-        {foundTasks ? (
+        {isLoading ? (
+          <div className="loading-section">
+            <AiOutlineLoading3Quarters className="loading-icon" />
+          </div>
+        ) : foundTasks ? (
           <div className="card-main-section">
             {tasks.map((task) => (
               <TodoItem
