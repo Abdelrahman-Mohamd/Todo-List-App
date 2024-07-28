@@ -18,3 +18,7 @@
   align-items: center;
   gap: 10px;
 }
+.todo-item-label.completed {
+  text-decoration: line-through;
+  color: grey;
+}

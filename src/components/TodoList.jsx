@@ -27,12 +27,30 @@ function TodoList() {
       });
   }, []);
 
-  const toggleTaskCompletion = (taskId) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === taskId ? { ...task, completed: !task.completed } : task
-      )
-    );
+  const toggleTaskCompletion = async (taskId, completed) => {
+    const taskToUpdate = tasks.find((task) => task.id === taskId);
+
+    try {
+      const response = await fetch(`/api/task/${taskId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...taskToUpdate, completed }),
+      });
+
+      if (response.ok) {
+        setTasks(
+          tasks.map((task) =>
+            task.id === taskId ? { ...task, completed } : task
+          )
+        );
+      } else {
+        console.error("Error updating task:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
   };
 
   const handleTaskUpdate = (id, updatedTask) => {
@@ -93,7 +111,7 @@ function TodoList() {
                   task={task.task}
                   id={task.id}
                   completed={task.completed}
-                  onToggle={() => toggleTaskCompletion(task.id)}
+                  onToggle={toggleTaskCompletion}
                   onTaskUpdate={handleTaskUpdate}
                   onTaskDelete={handleTaskDelete}
                 />

@@ -40,7 +40,12 @@ function EditTask({ task, id, completed, onTaskUpdate }) {
         Edit <FaEdit className="edit-btn-icon" />
       </button>
       {isPopupVisible && (
-        <PopUpWindow task={task} onClose={closePopup} onSave={onSave} />
+        <PopUpWindow
+          task={task}
+          onClose={closePopup}
+          onSave={onSave}
+          loading={loading}
+        />
       )}
     </>
   );

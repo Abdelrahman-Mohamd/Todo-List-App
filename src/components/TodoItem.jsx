@@ -17,10 +17,13 @@ function TodoItem({
           type="checkbox"
           id={`task-${id}`}
           checked={completed}
-          onChange={onToggle}
+          onChange={() => onToggle(id, !completed)}
           className="todo-item-checkbox"
         />
-        <label className="todo-item-label" htmlFor={`task-${id}`}>
+        <label
+          className={`todo-item-label ${completed ? "completed" : ""}`}
+          htmlFor={`task-${id}`}
+        >
           {task}
         </label>
       </div>
