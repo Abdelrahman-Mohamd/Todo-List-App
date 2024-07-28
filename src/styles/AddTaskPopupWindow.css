@@ -80,3 +80,17 @@
   outline: none;
   border: 1px solid #4127879c;
 }
+.loading-icon {
+  font-size: 4rem;
+  color: #4127879c;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

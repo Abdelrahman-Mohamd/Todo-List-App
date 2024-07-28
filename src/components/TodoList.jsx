@@ -106,7 +106,13 @@ function TodoList() {
             </div>
           )}
         </div>
-        <div className="add-task-component-container">
+        <div
+          className={
+            isLoading || !foundTasks
+              ? "hide-add-task-btn"
+              : "add-task-component-container"
+          }
+        >
           <AddTask onClick={() => setIsPopupOpen(true)} />
         </div>
       </div>

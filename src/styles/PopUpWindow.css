@@ -1,0 +1,113 @@
+/* Overlay that covers the entire screen */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure it's on top */
+}
+
+/* Main popup window */
+.popup-window {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  z-index: 1000; /* Ensure it's on top */
+}
+
+/* Popup heading */
+.add-task-popup-heading {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  color: #4127879c;
+  margin-bottom: 20px;
+}
+
+/* Input field */
+.add-task-popup-input {
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #4127879c;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* Button container */
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+/* OK button */
+.add-task-popup-ok-btn {
+  background-color: #4127875f;
+  color: white;
+  padding: 5px 20px;
+  border: 1px solid rgba(0, 128, 0, 0.479);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-out;
+  font-family: "Rubik", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.add-task-popup-ok-btn:hover {
+  background-color: #4127879c;
+}
+
+/* Cancel button */
+.add-task-popup-cancel-btn {
+  background-color: #4127875f;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 128, 0, 0.479);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-out;
+  font-family: "Rubik", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.add-task-popup-cancel-btn:hover {
+  background-color: #4127879c;
+}
+.loading-icon {
+  font-size: 4rem;
+  color: #4127879c;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
