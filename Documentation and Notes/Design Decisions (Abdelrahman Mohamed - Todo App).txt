@@ -1,0 +1,27 @@
+1) Using Vite Instead of Create React App for Project Initialization:
+----------------------------------------------------------------------
+- Faster development
+- Flexible
+- Configurable setup (using vite.config.js)
+
+2) Creating a Real Yet Simple API for Testing the Flow of the App:
+----------------------------------------------------------------------
+- Provides a more realistic experience
+
+3) Calling the API in TodoList Component:
+----------------------------------------------------------------------
+- Facilitates easier state management since we are using useState, which involves prop drilling
+
+4) Using AOS Library for Animations:
+----------------------------------------------------------------------
+- Easy to use
+- Fastest option considering the given time constraints
+
+5) useState vs state management library (ex. redux):
+-----------------------------------------------------------------------
+- We could have used a state management library instead of useState to avoid the headache of lifting state up and prop drilling. However, I followed the requirements, and useState is still a valid option considering the size of the project.
+
+****************************************** NOTE ***************************************
+***************************************************************************************
+If you encounter any delay in the response (such as checking the task taking too long or adding a task taking 50 seconds), it's because I hosted the API on a free server that takes 50 seconds to warm up when run for the first time after not being used for at least 15 minutes. Please be patient for the first request only; everything will run smoothly afterward. Thank you in advance.
+

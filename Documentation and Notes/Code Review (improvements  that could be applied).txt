@@ -1,0 +1,25 @@
+1) Responsiveness:
+--------------------
+I could have added media queries to make the Todo list suitable for different screen sizes, but time was not on my side.
+
+Using useMemo Hook:
+--------------------
+I could have used the useMemo hook to optimize performance and prevent unnecessary calculations and renders.
+
+State Management:
+--------------------
+We could have used a state management library instead of useState to avoid the headache of lifting state up and prop drilling. However, I followed the requirements, and useState is still a valid option considering the size of the project.
+
+API Latency / Response Time:
+------------------------------
+Considering this is a sample API, if we were to create a database and use queries, I would have been more cautious while writing the queries to ensure the response time is not too long, depending on the query complexity.
+
+
+****************************************** NOTE ***************************************
+***************************************************************************************
+If you encounter any delay in the response (such as checking the task taking too long or adding a task taking 50 seconds), it's because I hosted the API on a free server that takes 50 seconds to warm up when run for the first time after not being used for at least 15 minutes. Please be patient for the first request only; everything will run smoothly afterward. Thank you in advance.
+
+
+
+
+
